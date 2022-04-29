@@ -3,6 +3,7 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 use app\models\SpeciesLocations;
+use app\models\Measurements;
 
 class Locations extends ActiveRecord
 {
@@ -18,6 +19,11 @@ class Locations extends ActiveRecord
     public function getSpeciesLocations()
     {
         return $this->hasMany(SpeciesLocations::class, ['location_id' => 'id']);
+    }
+    
+    public function getMeasurements()
+    {
+        return $this->hasMany(Measurements::class, ['location_id' => 'id']);
     }
     
     

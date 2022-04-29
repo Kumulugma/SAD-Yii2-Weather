@@ -67,7 +67,6 @@ class SiteController extends Controller {
         RestClient::pullSpecies();
         RestClient::pullLocations();
         RestClient::pullMeasurements();
-        exit;
         return $this->redirect(['site/index']);
     }
 
@@ -112,7 +111,9 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionMeasures() {
-        return $this->render('measures');
+        return $this->render('measures', [
+                    'locations' => Locations::getAllLocations(),
+        ]);
     }
 
 }
