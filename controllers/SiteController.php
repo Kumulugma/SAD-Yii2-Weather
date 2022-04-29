@@ -2,19 +2,21 @@
 
 namespace app\controllers;
 
-use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use app\models\Species;
+use app\models\Locations;
+use app\models\Measurements;
+use app\models\RestClient;
 
-class SiteController extends Controller
-{
+class SiteController extends Controller {
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
@@ -39,8 +41,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -53,13 +54,34 @@ class SiteController extends Controller
     }
 
     /**
+     * Run synchronization.
+     *
+     * @return string
+     */
+    public function actionSynchronize() {
+
+//        $species = new Species();
+//        $species->name = 'Drosera 123';
+//        $species->save();
+
+        RestClient::pullSpecies();
+        RestClient::pullLocations();
+        RestClient::pullMeasurements();
+        exit;
+        return $this->redirect(['site/index']);
+    }
+
+    /**
      * Displays homepage.
      *
      * @return string
      */
-    public function actionIndex()
-    {
-        return $this->render('index');
+    public function actionIndex() {
+        return $this->render('index', [
+                    'species' => new Species(),
+                    'locations' => new Locations(),
+                    'measurements' => new Measurements()
+        ]);
     }
 
     /**
@@ -67,10 +89,9 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionLocations()
-    {
+    public function actionLocations() {
         return $this->render('locations', [
-//            'model' => $model,
+            'locations' => Locations::getLocations(),
         ]);
     }
 
@@ -79,8 +100,7 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionSpecies()
-    {
+    public function actionSpecies() {
         return $this->render('species');
     }
 
@@ -89,8 +109,8 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionMeasures()
-    {
+    public function actionMeasures() {
         return $this->render('measures');
     }
+
 }
