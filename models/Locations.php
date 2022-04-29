@@ -21,7 +21,7 @@ class Locations extends ActiveRecord
     }
     
     
-    public static function getLocations()
+    public static function getAllLocations()
     {
         return self::find()->all();
     }

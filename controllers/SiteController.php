@@ -91,7 +91,7 @@ class SiteController extends Controller {
      */
     public function actionLocations() {
         return $this->render('locations', [
-            'locations' => Locations::getLocations(),
+                    'locations' => Locations::getAllLocations(),
         ]);
     }
 
@@ -101,7 +101,9 @@ class SiteController extends Controller {
      * @return string
      */
     public function actionSpecies() {
-        return $this->render('species');
+        return $this->render('species', [
+                    'species' => Species::getAllSpecies(),
+        ]);
     }
 
     /**
