@@ -16,9 +16,9 @@ class m220428_181031_create_table_measurements extends Migration
         $this->createTable('measurements', [
             'id' => Schema::TYPE_PK,
             'name' => Schema::TYPE_STRING . ' NOT NULL',
-            'humidity' => Schema::TYPE_FLOAT,
-            'iteration' => Schema::TYPE_FLOAT,
-            'pressure' => Schema::TYPE_FLOAT,
+            'humidity' => Schema::TYPE_INTEGER,
+            'iteration' => Schema::TYPE_INTEGER,
+            'pressure' => Schema::TYPE_INTEGER,
             'temp_feels' => Schema::TYPE_FLOAT,
             'temp_max' => Schema::TYPE_FLOAT,
             'temp_min' => Schema::TYPE_FLOAT,

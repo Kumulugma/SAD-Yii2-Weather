@@ -15,8 +15,8 @@ class m220428_185413_create_table_species_locations extends Migration
     {
         $this->createTable('species_locations', [
             'id' => Schema::TYPE_PK,
-            'species_id' => Schema::TYPE_TEXT,
-            'location_id' => Schema::TYPE_TEXT
+            'species_id' => Schema::TYPE_INTEGER,
+            'location_id' => Schema::TYPE_INTEGER
         ]);
     }
 

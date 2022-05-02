@@ -12,7 +12,7 @@ class m220429_132000_add_location_id_to_measurements extends Migration {
      * {@inheritdoc}
      */
     public function safeUp() {
-        $this->addColumn('measurements', 'location_id', Schema::TYPE_TEXT . ' NOT NULL');
+        $this->addColumn('measurements', 'location_id', Schema::TYPE_INTEGER . ' NOT NULL');
     }
 
     /**
