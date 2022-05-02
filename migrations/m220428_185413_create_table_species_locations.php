@@ -18,6 +18,10 @@ class m220428_185413_create_table_species_locations extends Migration
             'species_id' => Schema::TYPE_INTEGER,
             'location_id' => Schema::TYPE_INTEGER
         ]);
+        
+        $this->addForeignKey('FK1_species_locations',     'species_locations',    'species_id', 'species', 'id', 'CASCADE', 'CASCADE');
+        $this->addForeignKey('FK2_locations_species',     'species_locations',    'location_id', 'locations', 'id', 'CASCADE', 'CASCADE');
+   
     }
 
     /**

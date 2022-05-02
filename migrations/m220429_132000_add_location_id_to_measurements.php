@@ -13,6 +13,7 @@ class m220429_132000_add_location_id_to_measurements extends Migration {
      */
     public function safeUp() {
         $this->addColumn('measurements', 'location_id', Schema::TYPE_INTEGER . ' NOT NULL');
+        $this->addForeignKey('FK3_measurements', 'measurements', 'location_id', 'locations', 'id', 'CASCADE', 'CASCADE');
     }
 
     /**
