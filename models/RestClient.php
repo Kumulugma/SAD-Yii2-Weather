@@ -21,7 +21,7 @@ class RestClient {
         while ($loop) {
             $response = $client->createRequest()
                     ->setMethod('GET')
-                    ->setUrl('http://weather.gemmae.pl/wp-json/wp/v2/species')
+                    ->setUrl('http://weather.k3e.pl/wp-json/wp/v2/species')
                     ->setData(['per_page' => self::PER_PAGE_LIMIT, 'page' => $i])
                     ->send();
 
@@ -60,7 +60,7 @@ class RestClient {
         while ($loop) {
             $response = $client->createRequest()
                     ->setMethod('GET')
-                    ->setUrl('http://weather.gemmae.pl/wp-json/wp/v2/location')
+                    ->setUrl('http://weather.k3e.pl/wp-json/wp/v2/location')
                     ->setData(['per_page' => self::PER_PAGE_LIMIT, 'page' => $i])
                     ->send();
 
@@ -121,7 +121,7 @@ class RestClient {
         while ($loop) {
             $response = $client->createRequest()
                     ->setMethod('GET')
-                    ->setUrl('http://weather.gemmae.pl/wp-json/wp/v2/measurement')
+                    ->setUrl('http://weather.k3e.pl/wp-json/wp/v2/measurement')
                     ->setData(['per_page' => self::PER_PAGE_LIMIT, 'page' => $i])
                     ->send();
 
